@@ -1,0 +1,62 @@
+---
+// Component Imports
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Wrapper from '../../components/Wrapper.astro'
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+
+import { getSanityContent } from '../../utils/helpers.js';
+import { allPosts } from '../../lib/api.js';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Example Blog';
+let description = 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.';
+let permalink = 'https://example.com/blog/';
+
+const response = await getSanityContent({query: allPosts});
+const posts = response.allPost;
+
+---
+<!DOCTYPE html>
+<BaseLayout title={title} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+  <Wrapper>
+    <article class="blog-page-content__article">
+      <section class="postlist">
+        {posts.map((post) => <BlogPostPreview post={post} />)}
+      </section>
+    </article>
+  </Wrapper>
+</BaseLayout>
+
+<style global>
+ /* Posts list */
+  .postlist {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+  
+  }
+  .postlist-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .postlist-item__img {
+    border-radius: 0.5rem;
+    height: auto;
+  }
+    
+  @media screen and (max-width: 769px) {
+    .blog-page-content__article {
+      padding: 1rem;
+    }
+    .postlist {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
