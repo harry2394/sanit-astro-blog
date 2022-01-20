@@ -1,15 +1,22 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Wrapper from '../components/Wrapper.astro';
 
-let title = 'Astro Sanity Minimal Starter';
-let description = 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.';
-let permalink = 'https://example.com/';
+
+
+let title = 'My Astro Site';
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
-  <Wrapper>
-    <h1>Astro Sanity Minimal Starter</h1>
-    <a href="/blog">Blog</a>
-  </Wrapper>
-</BaseLayout>
+<head>    
+ <link
+        rel="stylesheet"
+        href={Astro.resolve("../assets/style/global.css")}
+    >
+    </head>
+<body class="flex  justify-center">
+<div class="flex flex-col">
+
+    <h1 class="flex justify-center font-bold text-3xl">Astro Sanity React Tailwind</h1>
+    <a class="flex justify-center font-bold mt-10 text-red-500 text-xl bg-black mx-28 rounded-lg" href="/blog">Enter Blog</a>
+</div>
+  
+</body>
+

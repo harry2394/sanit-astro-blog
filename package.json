@@ -5,5 +5,8 @@
   "scripts": {
     "graphql-deploy": "lerna run graphql-deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.2"
   }
 }

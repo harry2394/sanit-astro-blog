@@ -12,12 +12,24 @@ const { post } = Astro.props;
 ---
 
 <Wrapper>
-  <article class="post-content__article">
-      {post.mainImage && <img width="720" height="420" class="post-main__img" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />}
-      <h1>{post.title}</h1>
-      <time>{formatBlogPostDate(post.publishedAt)}</time>
-      {post.author && <p>By {post.author.name}</p>}
-      <SanityBlockContent blocks={post.bodyRaw} />
+<head>    
+ <link
+        rel="stylesheet"
+        href={Astro.resolve("../assets/style/global.css")}
+    >
+    </head>
+  <article class="flex justify-center">
+  <div class="m-10">
+      {post.mainImage && <img  class="w-1/2 rounded-lg " loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />}
+      <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+                {post.title}
+              </h2>
+      <time class=" text-xl font-semibold text-gray-900">{formatBlogPostDate(post.publishedAt)}</time>
+      {post.author && <p class="text-xl font-semibold text-gray-900">By {post.author.name}</p>}
+      <div class="font-semibold text-gray-900">
+      <SanityBlockContent  blocks={post.bodyRaw} />
+      </div>
+  </div>
   </article>
 </Wrapper>
 
