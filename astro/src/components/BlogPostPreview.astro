@@ -15,9 +15,9 @@ const { post } = Astro.props;
     </head>
 <article class=" ">
 
-<a href={`/blog/${post.slug.current}`}>
-<div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-      <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+
+<div class=" max-w-lg mx-3 h-full grid gap-5  ">
+      <div class="flex flex-col my-5 rounded-lg shadow-lg overflow-hidden">
         <div class="flex-shrink-0">
           {post.mainImage && <img  class="h-48 w-full object-none" loading="lazy" src={getSanityImageUrl(post.mainImage).url()} />}
         </div>
@@ -62,7 +62,7 @@ const { post } = Astro.props;
         </div>
       </div>
       </div>
-      </a>
+
 
 </article>
 
